@@ -1,0 +1,202 @@
+<div class="row">
+    <div class="col col-lg-10 offset-lg-1">
+      <div class="form-container">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="form-section1">
+            <div class="row">
+              <div class="col col-lg-6">
+                <div class="form-group">
+                  <label for="Nombre">Nombre Completo</label>
+                  <input type="text" class="form-control" formControlName="Nombre" id="Nombre" readonly>
+                </div>
+              </div>
+              <div class="col col-lg-6">
+                <div class="form-group">
+                  <label for="Fecha_Nacimiento">Fecha Nacimiento</label>
+                  <input type="text" class="form-control" formControlName="Fecha_Nacimiento" id="Fecha_Nacimiento" readonly>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-lg-6">
+                <div class="form-group">
+                  <label for="Telefono_Casa">Telefono Casa u Oficina</label>
+                  <input type="text" class="form-control" formControlName="Telefono_Casa" id="Telefono_Casa" readonly>
+                </div>
+              </div>
+              <div class="col col-lg-6">
+                <div class="form-group">
+                  <label for="Telefono_Celular">Telefono_Celular</label>
+                  <input type="text" class="form-control" formControlName="Telefono_Celular" id="Telefono_Celular" readonly>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-lg-6">
+                <div class="form-group">
+                  <label for="Tiene_Correo">Tiene Correo</label><br/>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" formControlName="Tiene_Correo" id="radioSi" value="SI" readonly>
+                    <label class="form-check-label" for="radioSi">Sí</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" formControlName="Tiene_Correo" id="radioNo" value="NO" readonly>
+                    <label class="form-check-label" for="radioNo">No</label>
+                  </div>
+                </div>
+              </div>
+              <div class="col col-lg-6">
+                <div class="form-group">
+                  <label for="Correo_Electronico">Correo Electrónico</label>
+                  <input type="text" class="form-control" formControlName="Correo_Electronico" id="Correo_Electronico" readonly>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-lg-6">
+                <div class="form-group">
+                  <label for="Lugar_Trabajo">Lugar Trabajo</label>
+                  <input type="text" class="form-control" formControlName="Lugar_Trabajo" id="Lugar_Trabajo" readonly>
+                </div>
+              </div>
+              <div class="col col-lg-6">
+                <div class="form-group">
+                  <label for="Ciudad">Ciudad de Visita</label>
+                  <input type="text" class="form-control" formControlName="Ciudad" id="Ciudad" readonly>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-lg-6">
+                <div class="form-group">
+                  <label for="Colonia">Colonia</label>
+                  <input type="text" class="form-control" formControlName="Colonia" id="Colonia" readonly>
+                </div>
+              </div>
+              <div class="col col-lg-6">
+                <div class="form-group">
+                  <label for="Estado_Civil">Estado Civil</label>
+                  <input type="text" class="form-control" formControlName="Estado_Civil" id="Estado_Civil" readonly>
+                </div>
+              </div>
+            </div>
+          </div><!--End Section1-->
+          <div class="form-section2">
+            <div class="row">
+              <div class="col col-lg-6">
+                <div class="form-group">
+                  <label for="Cliente">¿El Cliente es?</label><br/>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" formControlName="Cliente" id="radioCita" value="CITA" readonly>
+                    <label class="form-check-label" for="radioCita">CITA</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" formControlName="Cliente" id="radioPase" value="PASE" readonly>
+                    <label class="form-check-label" for="radioPase">PASE</label>
+                  </div>
+                </div>
+              </div>
+              <div class="col col-lg-6">
+                <div class="form-group">
+                  <label for="Asesor_Contacto">Asesor Contacto</label>
+                  <input type="text" class="form-control" formControlName="Asesor_Contacto" id="Asesor_Contacto" readonly>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-lg-6">
+                <div class="form-group">
+                  <label for="Vendedor_atendera">Vendedor que atenderá</label>
+                  <input type="text" class="form-control" formControlName="Vendedor_atendera" id="Vendedor_atendera" readonly>
+                </div>
+              </div>
+              <div class="col col-lg-6">
+                <div class="form-group">
+                  <label for="Medio_gral">Medio de contacto</label>
+                  <input type="text" class="form-control" formControlName="Medio_gral" id="Medio_gral" readonly>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-lg-6">
+                <div class="form-group">
+                  <label for="Medio_especifico">Medio especifico de contacto</label>
+                  <input type="text" class="form-control" formControlName="Medio_especifico" id="Medio_especifico" readonly>
+                </div>
+              </div>            
+            </div>
+          </div><!-- End Section2-->
+          <div class="form-section3">
+            <div class="row">
+              <div class="col col-lg-6">
+                <div class="form-group">
+                  <label for="Valor_Vivienda">Valor vivienda</label>
+                  <input type="text" class="form-control" formControlName="Valor_Vivienda" id="Valor_Vivienda" readonly>
+                </div>
+              </div>
+              <div class="col col-lg-6">
+                <div class="form-group">
+                  <label for="Tipo_Ingreso">Tipo ingreso</label>
+                  <input type="text" class="form-control" formControlName="Tipo_Ingreso" id="Tipo_Ingreso" readonly>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-lg-6">
+                <div class="form-group">
+                  <label for="Ingreso_MNX">Ingreso MNX</label>
+                  <input type="text" class="form-control" formControlName="Ingreso_MNX" id="Ingreso_MNX" readonly>
+                </div>
+              </div>
+            </div>
+          </div><!--End Section3-->
+          <div class="form-section4">
+            <div class="row">
+              <div class="col col-lg-4">
+                <div class="form-group">
+                  <label for="Viable">Viable</label>
+                  <input type="text" class="form-control" formControlName="Viable" id="Viable">
+                </div>
+              </div>
+              <div class="col col-lg-4">
+                <div class="form-group">
+                  <label for="Semana">Semana</label>
+                  <input type="text" class="form-control" formControlName="Semana" id="Semana" readonly>
+                </div>
+              </div>
+              <div class="col col-lg-4">
+                <div class="form-group">
+                  <label for="Fecha_Registro">Registro</label>
+                  <input type="text" class="form-control" formControlName="Fecha_Registro" id="Fecha_Registro" readonly>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="Comentarios">Comentarios</label>
+                  <textarea class="form-control" id="Comentarios" rows="3" formControlName="Comentarios"></textarea>
+                </div>
+              </div>
+            </div>
+          </div><!--End Section4-->
+          <div class="row">
+            <div class="col">
+              <div class="button-container">
+                <button type="submit" class="btn btn-outline-primary"> Actualizar</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="link-container">
+            <a routerLink="/tables">
+              <i class="fas fa-angle-left"></i>
+              Ver Tablas</a>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

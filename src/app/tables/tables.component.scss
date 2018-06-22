@@ -1,0 +1,23 @@
+.select-container{
+    margin-top: 50px;
+
+    select {
+        text-transform: capitalize;
+    }
+}
+
+.table-container{
+
+    .table-title{
+        p{
+            font-size: 25px;
+            text-transform: capitalize;
+            font-weight: bold;
+            color: #808B96;
+        }
+    }
+
+    .table-data{
+        overflow: auto;
+    }
+}

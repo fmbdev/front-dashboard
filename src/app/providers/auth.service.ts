@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, Response } from '@angular/http';
+import { Router } from '@angular/router';
+import { Http, Headers, Response} from '@angular/http';
 
 import { User } from '../interfaces/user';
 
 import { pipe, Observable } from 'rxjs';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable'
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError, tap } from 'rxjs/operators';
 import 'rxjs';
 
 
@@ -14,7 +15,8 @@ export class AuthService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
 
-  constructor(private http: Http) { }
+  constructor(private router: Router,
+              private http: Http) { }
 
   userRegister(user: User) {
     const data = JSON.stringify({email: user.email, password: user.password});
@@ -40,10 +42,43 @@ export class AuthService {
           return {status: res.status, data: res.json()};
         }
       ),
+      tap(
+        (data) => {
+          localStorage.setItem('token', data.data.token);
+          localStorage.setItem('user_id', data.data.user.id);
+          localStorage.setItem('user_email', data.data.user.email);
+          localStorage.setItem('user_role', data.data.user.roles[0].id);
+        }
+      ),
       catchError(err => {
         return ErrorObservable.create({status: err.status, data: err.json()});
       })
     );
+  }
+
+  userLogout(){
+    localStorage.clear();
+    this.router.navigate(['/']);
+  }
+
+  userIsAuthenticated(): boolean{
+    return this.getToken() ? true : false;
+  }
+
+  getToken(){
+    return localStorage.getItem('token');
+  }
+
+  getRole(){
+    return this.userIsAuthenticated() ? localStorage.getItem('user_role') : 'null';
+  }
+
+  getUser(){
+    return this.userIsAuthenticated() ? localStorage.getItem('user_email') : 'null';
+  }
+
+  getUserId(){
+    return this.userIsAuthenticated() ? localStorage.getItem('user_id') : 'null';
   }
 
 }
