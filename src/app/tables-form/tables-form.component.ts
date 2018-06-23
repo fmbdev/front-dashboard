@@ -28,6 +28,23 @@ export class TablesFormComponent implements OnInit {
 
     this.data = this.tableServ.getRegisterTableById(this.registerId);
     this.initForm();
+
+    if(this.data.Tiene_Correo != ""){
+      if(this.data.Tiene_Correo.toUpperCase() == "SI"){
+        this.form.controls['Tiene_Correo'].setValue('SI');
+      }else{
+        this.form.controls['Tiene_Correo'].setValue('NO');
+      }
+    }
+
+    if(this.data.Cliente != ""){
+      if(this.data.Cliente.toUpperCase() == "CITA"){
+        this.form.controls['Cliente'].setValue('CITA');
+      }else{
+        this.form.controls['Cliente'].setValue('PASE');
+      }
+    }
+
   }
 
   onSubmit(){
@@ -53,7 +70,7 @@ export class TablesFormComponent implements OnInit {
       Medio_especifico: ['', Validators.required],
       Valor_Vivienda: [this.data.Valor_Vivienda, Validators.required],
       Tipo_Ingreso: [this.data.Tipo_Ingreso, Validators.required],
-      Ingreso_MNX: [this.data.Ingreso_MNX, Validators.required],
+      Ingreso_MXN: [this.data.Ingreso_MXN, Validators.required],
       Viable: [this.data.Viable, Validators.required],
       Semana: [this.data.Semana, Validators.required],
       Fecha_Registro: [this.data.Fecha_Registro, Validators.required],

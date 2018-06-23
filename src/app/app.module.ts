@@ -11,9 +11,13 @@ import { AuthService } from './providers/auth.service';
 import { RoleAccessService } from './providers/role-access.service';
 import { TablesService } from './providers/tables.service';
 import { ExecutiveService } from './providers/executive.service';
+import { LeadsService } from './providers/leads.service';
 
 // Guards
 import { AuthGuard } from './guards/auth.guard';
+
+// Ngx Pagination
+import {NgxPaginationModule} from 'ngx-pagination';
 
 // Components
 import { AppComponent } from './app.component';
@@ -26,6 +30,7 @@ import { ClientsComponent } from './clients/clients.component';
 import { ExecutiveListComponent } from './executive-list/executive-list.component';
 import { TablesFormComponent } from './tables-form/tables-form.component';
 import { LeadsComponent } from './leads/leads.component';
+import { LeadsFormComponent } from './leads-form/leads-form.component';
 
 
 @NgModule({
@@ -39,16 +44,18 @@ import { LeadsComponent } from './leads/leads.component';
     ClientsComponent,
     ExecutiveListComponent,
     TablesFormComponent,
-    LeadsComponent
+    LeadsComponent,
+    LeadsFormComponent
   ],
   imports: [
     HttpModule,
     FormsModule,
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
-  providers: [AuthService, RoleAccessService, TablesService, ExecutiveService, AuthGuard],
+  providers: [AuthService, RoleAccessService, TablesService, ExecutiveService, LeadsService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

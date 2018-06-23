@@ -4,7 +4,7 @@ import { Http, Headers, Response} from '@angular/http';
 import { AuthService } from '../providers/auth.service';
 
 import { pipe } from 'rxjs';
-import { map, tap, } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import 'rxjs';
 
 @Injectable()

@@ -16,6 +16,10 @@
             color: #808B96;
         }
     }
+    
+    table tr td{
+        cursor: pointer;
+    }
 
     .table-data{
         overflow: auto;

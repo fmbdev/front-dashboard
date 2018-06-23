@@ -3,9 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AuthGuard } from './guards/auth.guard';
 
+import { LeadsComponent } from './leads/leads.component';
 import { TablesComponent } from './tables/tables.component';
 import { LoginComponent } from './auth/login/login.component';
 import { ClientsComponent } from './clients/clients.component';
+import { LeadsFormComponent} from './leads-form/leads-form.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { ExecutivesComponent } from './executives/executives.component';
 import { TablesFormComponent} from './tables-form/tables-form.component';
@@ -38,6 +40,16 @@ const APP_ROUTES: Routes = [
     {
         path: 'tablesform',
         component: TablesFormComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'leads',
+        component: LeadsComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'leadsform',
+        component: LeadsFormComponent,
         canActivate: [AuthGuard]
     },
     {

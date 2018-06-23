@@ -40,7 +40,7 @@ export class TablesComponent implements OnInit {
     }
   }
 
-  sendToTableForm(name, id){
+  sendTableToForm(name, id){
     let params: NavigationExtras = {
       queryParams: {
         'table': name,

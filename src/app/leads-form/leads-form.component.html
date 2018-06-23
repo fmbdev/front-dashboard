@@ -1,0 +1,128 @@
+<div class="row">
+    <div class="col col-lg-10 offset-lg-1">
+      <div class="form-container">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="form-section1">
+            <div class="row">
+              <div class="col col-lg-6">
+                <div class="form-group">
+                  <label for="Nombre">Nombre Completo</label>
+                  <input type="text" class="form-control" formControlName="Nombre" id="Nombre" readonly>
+                </div>
+              </div>
+              <div class="col col-lg-6">
+                <div class="form-group">
+                  <label for="Apellidos">Apellidos</label>
+                  <input type="text" class="form-control" formControlName="Apellidos" id="Apellidos" readonly>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-lg-6">
+                <div class="form-group">
+                  <label for="Telefono">Telefono Casa u Oficina</label>
+                  <input type="text" class="form-control" formControlName="Telefono" id="Telefono" readonly>
+                </div>
+              </div>
+              <div class="col col-lg-6">
+                <div class="form-group">
+                  <label for="Celular">Celular</label>
+                  <input type="text" class="form-control" formControlName="Celular" id="Celular" readonly>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-lg-6">
+                <div class="form-group">
+                  <label for="Email">Correo Electrónico</label>
+                  <input type="text" class="form-control" formControlName="Email" id="Email" readonly>
+                </div>
+              </div>
+              <div class="col col-lg-6">
+                <div class="form-group">
+                  <label for="FechaNacimiento">Fecha de nacimiento</label>
+                  <input type="text" class="form-control" formControlName="FechaNacimiento" id="FechaNacimiento" readonly>
+                </div>
+              </div>
+            </div>
+          </div><!--End Section1-->
+          <div class="form-section2">
+            <div class="row">
+              <div class="col col-lg-6">
+                <div class="form-group">
+                  <label for="Viable">Viable</label>
+                  <select formControlName="Viable" class="form-control" id="select-tables" (change)="changeViable(form.controls.Viable.value)">
+                    <option value="" selected>Seleccione una opción</option>
+                    <option value="SI">Sí</option>
+                    <option value="NO">No</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col col-lg-6">
+                <div class="form-group">
+                  <label for="Semana">Semana</label>
+                  <input type="text" class="form-control" formControlName="Semana" id="Semana" readonly>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-lg-6">
+                <div class="form-group">
+                  <label for="FechaCreacion">FechaCreacion</label>
+                  <input type="text" class="form-control" formControlName="FechaCreacion" id="FechaCreacion" readonly>
+                </div>
+              </div>
+              <div class="col col-lg-6">
+                <div class="form-group">
+                  <label for="DesarrolloInteres">Desarrollo de interes</label>
+                  <input type="text" class="form-control" formControlName="DesarrolloInteres" id="DesarrolloInteres" readonly>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-lg-6">
+                <div class="form-group">
+                  <label for="Viable">Tipificación</label>
+                  <select formControlName="Tipificacion" class="form-control" id="select-tables">
+                    <option value="" selected>Seleccione una opción</option>
+                    <option *ngFor="let tipification of tipifications;">{{ tipification.option }}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col col-lg-6">
+                <div class="form-group">
+                  <label for="OtraTipificacion">Otro</label>
+                  <input type="text" class="form-control" formControlName="OtraTipificacion" id="OtraTipificacion" readonly>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="Comentarios">Comentarios</label>
+                  <textarea class="form-control" id="Comentarios" rows="3" formControlName="Comentarios"></textarea>
+                </div>
+              </div>
+            </div>
+          </div><!-- End Section2-->                
+          <div class="row">
+            <div class="col">
+              <div class="button-container">
+                <button type="submit" class="btn btn-outline-primary">Actualizar</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="link-container">
+            <a routerLink="/leads">
+              <i class="fas fa-angle-left"></i>
+              Ver Leads</a>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
