@@ -16,6 +16,9 @@ import { LeadsService } from './providers/leads.service';
 // Guards
 import { AuthGuard } from './guards/auth.guard';
 
+// Pipes
+import { WeekOfYearPipe } from './pipes/week-of-year.pipe';
+
 // Ngx Pagination
 import {NgxPaginationModule} from 'ngx-pagination';
 
@@ -32,7 +35,6 @@ import { TablesFormComponent } from './tables-form/tables-form.component';
 import { LeadsComponent } from './leads/leads.component';
 import { LeadsFormComponent } from './leads-form/leads-form.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +47,8 @@ import { LeadsFormComponent } from './leads-form/leads-form.component';
     ExecutiveListComponent,
     TablesFormComponent,
     LeadsComponent,
-    LeadsFormComponent
+    LeadsFormComponent,
+    WeekOfYearPipe
   ],
   imports: [
     HttpModule,

@@ -61,7 +61,7 @@
               <div class="col col-lg-6">
                 <div class="form-group">
                   <label for="Semana">Semana</label>
-                  <input type="text" class="form-control" formControlName="Semana" id="Semana" readonly>
+                  <input type="text" class="form-control" formControlName="Semana" id="Semana" [value]="form.controls['FechaCreacion'].value | weekOfYear" readonly>
                 </div>
               </div>
             </div>

@@ -34,12 +34,26 @@ export class LeadsService {
     )
   }
 
+  getAllLeads(){
+    return this.registers;
+  }
+
   getRegisterLeadById(id: string){
     for(let i = 0; i < this.registers.length; i++){
       if(this.registers[i].id == id){
         return this.registers[i];
       }
     }
+  }
+
+  getLeadsByFilter(filter: string, valueField: string){
+    let leadsByilter = [];
+    for(let i = 0; i < this.registers.length; i++){
+      if(this.registers[i][filter].toLowerCase().indexOf(valueField.toLowerCase()) != -1){
+        leadsByilter.push(this.registers[i])
+      }
+    }
+    return leadsByilter;
   }
 
 }

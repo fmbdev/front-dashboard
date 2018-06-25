@@ -16,8 +16,7 @@ export class LeadsComponent implements OnInit {
   private entriesForm: FormGroup;
   private filterForm: FormGroup;
   private total: number = 0;
-  private tableFields: string[] = ['Nombre', 'Apellidos', 'Número Teléfono', 'Número Celular', 'Email', 'Fecha de Registro', 'Semana', 'Viable', 'Tipificación'];
-
+  
   constructor(private router: Router,
               private formBuilder: FormBuilder,
               private leadServ: LeadsService) { }
@@ -45,7 +44,19 @@ export class LeadsComponent implements OnInit {
   }
 
   submitFilter(){
-    console.log(this.filterForm.value);
+    let filter = this.filterForm.controls['filter'].value;
+    let valueField = this.filterForm.controls['field'].value;
+    this.leads = this.leadServ.getLeadsByFilter(filter, valueField);
+  }
+
+  enableFilterField(filter: string){
+    if(filter != ""){
+      this.filterForm.controls['field'].enable();
+    }else{
+      this.leads = this.leadServ.getAllLeads()
+      this.filterForm.controls['field'].setValue('');
+      this.filterForm.controls['field'].disable();
+    }
   }
 
   private initForm(){
@@ -57,7 +68,7 @@ export class LeadsComponent implements OnInit {
     //Form for filter fields
     this.filterForm = this.formBuilder.group({
       filter: ['', Validators.required],
-      field: ['', Validators.required]
+      field: [{value: '', disabled: true}, Validators.required]
     });
   }
 

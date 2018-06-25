@@ -45,6 +45,16 @@ export class TablesFormComponent implements OnInit {
       }
     }
 
+    if(this.data.Medio_mkt !=""){
+      this.form.controls['Medio_especifico'].setValue(this.data.Medio_mkt);
+    }else if(this.data.Medio_promocion !=""){
+      this.form.controls['Medio_especifico'].setValue(this.data.Medio_promocion);
+    }else if(this.data.Medio_ventas !=""){
+      this.form.controls['Medio_especifico'].setValue(this.data.Medio_ventas);
+    }else if(this.data.Medio_citamkt){
+      this.form.controls['Medio_especifico'].setValue(this.data.Medio_citamkt);
+    }
+
   }
 
   onSubmit(){

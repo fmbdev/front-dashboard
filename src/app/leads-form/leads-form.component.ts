@@ -39,6 +39,10 @@ export class LeadsFormComponent implements OnInit {
     }
   }
 
+  onSubmit(){
+    console.log(this.form.value);
+  }
+
   changeViable(value: string){
     if(value.toUpperCase() == "SI"){
       this.changeDataIsViable();

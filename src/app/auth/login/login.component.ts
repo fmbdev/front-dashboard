@@ -16,7 +16,6 @@ import 'rxjs';
 export class LoginComponent implements OnInit {
 
   private loginForm: FormGroup;
-
   private message: String = '';
 
   @ViewChild('msgcont') msgcont: ElementRef;

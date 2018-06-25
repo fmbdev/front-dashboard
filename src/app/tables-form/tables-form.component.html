@@ -161,7 +161,7 @@
               <div class="col col-lg-4">
                 <div class="form-group">
                   <label for="Semana">Semana</label>
-                  <input type="text" class="form-control" formControlName="Semana" id="Semana" readonly>
+                  <input type="text" class="form-control" formControlName="Semana" id="Semana" [value]="form.controls['Fecha_Registro'].value | weekOfYear" readonly>
                 </div>
               </div>
               <div class="col col-lg-4">
