@@ -78,7 +78,7 @@ export class ExecutivesComponent implements OnInit {
   }
 
   delete(id: number){
-    let answer = confirm("¿Esta seuro de querer eliminar este permiso?");
+    let answer = confirm("¿Esta seguro de querer eliminar este permiso?");
     if(answer){
       this.executiveServ.deleteExecutivePermission(id).subscribe(
         (res: any) => {

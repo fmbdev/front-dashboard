@@ -23,7 +23,7 @@ export class LeadsService {
 
   getLeads(){
     /*http://localhost:8000/api/leads?token=*/
-    return this.http.get('http://localhost:8000/api/leads?token='+this.token, {headers: this.headers}).pipe(
+    return this.http.get('https://app.fmb.agency/api/leads?token='+this.token, {headers: this.headers}).pipe(
       map(
         (res: Response) => {
           return res.json()
@@ -42,7 +42,7 @@ export class LeadsService {
   }
 
   getRegisterLeadById(id: string){
-    return this.http.get('http://localhost:8000/api/leads/'+id+'?token='+this.token, {headers: this.headers}).pipe(
+    return this.http.get('https://app.fmb.agency/api/leads/'+id+'?token='+this.token, {headers: this.headers}).pipe(
       map(
         (res: Response) => {
           return res.json();

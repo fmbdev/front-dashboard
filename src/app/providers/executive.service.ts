@@ -20,7 +20,7 @@ export class ExecutiveService {
 
   getExecutives(){
     /*http://localhost:8000/api/executives?token*/
-    return this.http.get('http://localhost:8000/api/executives?token='+this.token, {headers: this.headers}).pipe(
+    return this.http.get('https://app.fmb.agency/api/executives?token='+this.token, {headers: this.headers}).pipe(
       map(
         (res: Response) => {
           return res.json();
@@ -30,7 +30,7 @@ export class ExecutiveService {
   }
 
   getExecutivebyId(id: number){
-    return this.http.get('http://localhost:8000/api/executives/'+id+'?token='+this.token, {headers: this.headers}).pipe(
+    return this.http.get('https://app.fmb.agency/api/executives/'+id+'?token='+this.token, {headers: this.headers}).pipe(
       map(
         (res: Response) => {
           return res.json();
@@ -41,7 +41,7 @@ export class ExecutiveService {
 
   setExecuivePermissions(values){
     const data = JSON.stringify({ table: values.table, fields: values.fields, executiveId: values.executiveId });
-    return this.http.post('http://localhost:8000/api/permissions?token='+this.token, data, {headers: this.headers}).pipe(
+    return this.http.post('https://app.fmb.agency/api/permissions?token='+this.token, data, {headers: this.headers}).pipe(
       map(
         (res: Response) => {
           return {status: res.status, data: res.json()};
@@ -54,7 +54,7 @@ export class ExecutiveService {
   }
 
   getExecutivePermissions(id: number){
-    return this.http.get('http://localhost:8000/api/permissions/'+id+'?token='+this.token, {headers: this.headers}).pipe(
+    return this.http.get('https://app.fmb.agency/api/permissions/'+id+'?token='+this.token, {headers: this.headers}).pipe(
       map(
         (res: Response) => {
           return res.json();
@@ -64,7 +64,7 @@ export class ExecutiveService {
   }
 
   deleteExecutivePermission(id: number){
-    return this.http.get('http://localhost:8000/api/deletepermission/'+id+'?token='+this.token, {headers: this.headers}).pipe(
+    return this.http.get('https://app.fmb.agency/api/deletepermission/'+id+'?token='+this.token, {headers: this.headers}).pipe(
       map(
         (res: Response) => {
           return {status: res.status, data: res.json()};

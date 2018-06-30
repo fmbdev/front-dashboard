@@ -20,7 +20,7 @@ export class AuthService {
   userRegister(user: User) {
     const data = JSON.stringify({email: user.email, password: user.password});
     /*http://localhost:8000/api/auth/register*/
-    return this.http.post('http://localhost:8000/api/auth/register', data, {headers: this.headers}).pipe(
+    return this.http.post('https://app.fmb.agency/api/auth/register', data, {headers: this.headers}).pipe(
       map(
         (res: Response) => {
           return {status: res.status, data: res.json()};
@@ -35,7 +35,7 @@ export class AuthService {
   userLogin(user: User) {
     const data = JSON.stringify({email: user.email, password: user.password});
 
-    return this.http.post('http://localhost:8000/api/auth/login', data, {headers: this.headers}).pipe(
+    return this.http.post('https://app.fmb.agency/api/auth/login', data, {headers: this.headers}).pipe(
       map(
         (res: Response) => {
           return {status: res.status, data: res.json()};

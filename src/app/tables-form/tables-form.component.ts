@@ -112,15 +112,15 @@ export class TablesFormComponent implements OnInit {
     this.form.controls['Comentarios'].enable();
 
     this.getPermissionsFieldsByTable();
-    Object.keys(this.form.controls).forEach(key => {
-      if(this.fieldsTable != []){
-        for(let i = 0; i < this.fieldsTable.length; i++){
+    if(this.fieldsTable.length > 0){
+      Object.keys(this.form.controls).forEach(key => {
+       for(let i = 0; i < this.fieldsTable.length; i++){
           if(key.toUpperCase() == this.fieldsTable[i].toUpperCase()){
-            this.form.controls[key].enable();
+              this.form.controls[key].enable();
           }
         }
-      }
-    });
+      });
+    }
   }
 
   private getPermissionsFieldsByTable() {
@@ -129,12 +129,13 @@ export class TablesFormComponent implements OnInit {
 
     if(permissions){
       for(let i = 0; i < permissions.length; i++){
-        if(permissions[i].table.toUpperCase() == 'LEADS'){
+        if(permissions[i].table.toUpperCase() == permissions[i].table.toUpperCase()){
           tablePermission = permissions[i];
         }
       }
       this.fieldsTable = tablePermission.fields.split(', ');
     }
+    
   }
 
   private showMessageAuth(message: string, msg_class: string, icon_class: string) {

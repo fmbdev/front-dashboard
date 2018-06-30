@@ -22,7 +22,7 @@ export class TablesService {
 
   getTables(){
     /*http://localhost:8000/api/tables?token=*/
-    return this.http.get('http://localhost:8000/api/tables?token='+this.token, {headers: this.headers}).pipe(
+    return this.http.get('https://app.fmb.agency/api/tables?token='+this.token, {headers: this.headers}).pipe(
       map(
         (res: Response) => {
           return res.json();
@@ -34,7 +34,7 @@ export class TablesService {
   getTableInfo(table: string){
     this.registers = [];
 
-    return this.http.get('http://localhost:8000/api/infotable/'+table+'?token='+this.token, {headers: this.headers}).pipe(
+    return this.http.get('https://app.fmb.agency/api/infotable/'+table+'?token='+this.token, {headers: this.headers}).pipe(
       map(
         (res: Response) => {
           return res.json();
@@ -49,7 +49,7 @@ export class TablesService {
   }
 
   getRegisterTableById(table: string, id: string){
-    return this.http.get('http://localhost:8000/api/registertable/'+table+'/'+id+'?token='+this.token, {headers: this.headers}).pipe(
+    return this.http.get('https://app.fmb.agency/api/registertable/'+table+'/'+id+'?token='+this.token, {headers: this.headers}).pipe(
       map(
         (res: Response) => {
           return res.json();
@@ -59,7 +59,7 @@ export class TablesService {
   }
 
   getTableFields(table: string){
-    return this.http.get('http://localhost:8000/api/fieldstable/'+table+'?token='+this.token, {headers: this.headers}).pipe(
+    return this.http.get('https://app.fmb.agency/api/fieldstable/'+table+'?token='+this.token, {headers: this.headers}).pipe(
       map(
         (res: Response) => {
           return res.json()
@@ -70,7 +70,7 @@ export class TablesService {
 
   updateRegisterByTable(table: string, registerId: string, values: any){
     const data = JSON.stringify({ table: table, registerId: registerId, formValues: JSON.stringify(values) });
-    return this.http.post('http://localhost:8000/api/updatetables?token='+this.token, data, {headers: this.headers}).pipe(
+    return this.http.post('https://app.fmb.agency/api/updatetables?token='+this.token, data, {headers: this.headers}).pipe(
       map(
         (res: Response) => {
           return {status: res.status, data: res.json()};
