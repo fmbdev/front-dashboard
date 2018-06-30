@@ -1,0 +1,52 @@
+.executive-infor-container{
+    margin-top: 50px;
+}
+
+select#select-tables {
+    text-transform: capitalize;
+}
+
+.tab-content{
+    margin-top: 20px;
+    padding-bottom: 30px;
+    
+    .title{
+        margin: 20px 0;
+    }
+
+    .data-container i{
+        cursor: pointer;
+        &:hover{
+            color: #2874A6;
+        }
+    }
+
+    .button-container{
+        margin-top: 50px;
+        text-align: center;
+    }
+
+    .message-container{
+        margin-top: 30px;
+        padding: 15px 0 15px 20px;
+        background-color: grey;
+        border-radius: 4px;
+
+        p{
+            margin-bottom: 0;
+        }
+
+        &.hidden{
+            display: none;
+        }       
+    }
+
+    .msg-success{
+        background-color: #7DCEA0
+    }
+
+    .msg-error{
+        background-color: #E74C3C; 
+
+    }
+}

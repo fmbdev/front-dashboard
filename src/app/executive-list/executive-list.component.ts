@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, NavigationExtras } from '@angular/router';
 
 import { ExecutiveService } from '../providers/executive.service';
 import { AuthService } from '../providers/auth.service';
@@ -11,7 +12,8 @@ import { AuthService } from '../providers/auth.service';
 export class ExecutiveListComponent implements OnInit {
 
   private executives: any[];
-  constructor(private authServ: AuthService,
+  constructor(private router: Router,
+              private authServ: AuthService,
               private executiveServ: ExecutiveService) { }
 
   ngOnInit() {
@@ -20,9 +22,12 @@ export class ExecutiveListComponent implements OnInit {
     this.executiveServ.getExecutives().subscribe(
       (data: any[]) => {
         this.executives = data;
-        console.log(this.executives);
       }
     )
+  }
+
+  showExecutive(id: number){
+    this.router.navigate(['executives', id]);
   }
 
 }

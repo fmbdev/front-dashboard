@@ -19,7 +19,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let executive of executives;">
+          <tr *ngFor="let executive of executives;" (click)="showExecutive(executive.id)">
               <td>{{executive.email}}</td>
               <td>{{executive.roles[0].name}}</td>
           </tr>

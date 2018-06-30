@@ -3,8 +3,8 @@ import { Http, Headers, Response} from '@angular/http';
 
 import { AuthService } from '../providers/auth.service';
 
-import { pipe } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
+import { map, tap, catchError } from 'rxjs/operators';
 import 'rxjs';
 
 @Injectable()
@@ -33,7 +33,7 @@ export class TablesService {
   getTableInfo(table: string){
     this.registers = [];
 
-    return this.http.get('http://localhost:8000/api/table/'+table+'?token='+this.token, {headers: this.headers}).pipe(
+    return this.http.get('http://localhost:8000/api/infotable/'+table+'?token='+this.token, {headers: this.headers}).pipe(
       map(
         (res: Response) => {
           return res.json();
@@ -47,14 +47,38 @@ export class TablesService {
     );
   }
 
-  getRegisterTableById(id: string){
-    if(this.registers){
-      for(let i = 0; i < this.registers.length; i++){
-        if(this.registers[i].id == id){
-          return this.registers[i];
+  getRegisterTableById(table: string, id: string){
+    return this.http.get('http://localhost:8000/api/registertable/'+table+'/'+id+'?token='+this.token, {headers: this.headers}).pipe(
+      map(
+        (res: Response) => {
+          return res.json();
         }
-      }
-    }
+      )
+    )
+  }
+
+  getTableFields(table: string){
+    return this.http.get('http://localhost:8000/api/fieldstable/'+table+'?token='+this.token, {headers: this.headers}).pipe(
+      map(
+        (res: Response) => {
+          return res.json()
+        }
+      )
+    )
+  }
+
+  updateRegisterByTable(table: string, registerId: string, values: any){
+    const data = JSON.stringify({ table: table, registerId: registerId, formValues: JSON.stringify(values) });
+    return this.http.post('http://localhost:8000/api/updatetables?token='+this.token, data, {headers: this.headers}).pipe(
+      map(
+        (res: Response) => {
+          return {status: res.status, data: res.json()};
+        }
+      ),
+      catchError(err => {
+        return ErrorObservable.create({status: err.status, data: err.json()});
+      })
+    )
   }
 
 }

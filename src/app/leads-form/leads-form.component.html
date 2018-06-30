@@ -7,13 +7,13 @@
               <div class="col col-lg-6">
                 <div class="form-group">
                   <label for="Nombre">Nombre Completo</label>
-                  <input type="text" class="form-control" formControlName="Nombre" id="Nombre" readonly>
+                  <input type="text" class="form-control" formControlName="Nombre" id="Nombre">
                 </div>
               </div>
               <div class="col col-lg-6">
                 <div class="form-group">
                   <label for="Apellidos">Apellidos</label>
-                  <input type="text" class="form-control" formControlName="Apellidos" id="Apellidos" readonly>
+                  <input type="text" class="form-control" formControlName="Apellidos" id="Apellidos">
                 </div>
               </div>
             </div>
@@ -21,13 +21,13 @@
               <div class="col col-lg-6">
                 <div class="form-group">
                   <label for="Telefono">Telefono Casa u Oficina</label>
-                  <input type="text" class="form-control" formControlName="Telefono" id="Telefono" readonly>
+                  <input type="text" class="form-control" formControlName="Telefono" id="Telefono">
                 </div>
               </div>
               <div class="col col-lg-6">
                 <div class="form-group">
                   <label for="Celular">Celular</label>
-                  <input type="text" class="form-control" formControlName="Celular" id="Celular" readonly>
+                  <input type="text" class="form-control" formControlName="Celular" id="Celular">
                 </div>
               </div>
             </div>
@@ -35,13 +35,13 @@
               <div class="col col-lg-6">
                 <div class="form-group">
                   <label for="Email">Correo Electrónico</label>
-                  <input type="text" class="form-control" formControlName="Email" id="Email" readonly>
+                  <input type="text" class="form-control" formControlName="Email" id="Email">
                 </div>
               </div>
               <div class="col col-lg-6">
                 <div class="form-group">
                   <label for="FechaNacimiento">Fecha de nacimiento</label>
-                  <input type="text" class="form-control" formControlName="FechaNacimiento" id="FechaNacimiento" readonly>
+                  <input type="text" class="form-control" formControlName="FechaNacimiento" id="FechaNacimiento">
                 </div>
               </div>
             </div>
@@ -61,7 +61,7 @@
               <div class="col col-lg-6">
                 <div class="form-group">
                   <label for="Semana">Semana</label>
-                  <input type="text" class="form-control" formControlName="Semana" id="Semana" [value]="form.controls['FechaCreacion'].value | weekOfYear" readonly>
+                  <input type="text" class="form-control" formControlName="Semana" id="Semana" [value]="form.controls['FechaCreacion'].value | weekOfYear">
                 </div>
               </div>
             </div>
@@ -69,13 +69,13 @@
               <div class="col col-lg-6">
                 <div class="form-group">
                   <label for="FechaCreacion">FechaCreacion</label>
-                  <input type="text" class="form-control" formControlName="FechaCreacion" id="FechaCreacion" readonly>
+                  <input type="text" class="form-control" formControlName="FechaCreacion" id="FechaCreacion">
                 </div>
               </div>
               <div class="col col-lg-6">
                 <div class="form-group">
                   <label for="DesarrolloInteres">Desarrollo de interes</label>
-                  <input type="text" class="form-control" formControlName="DesarrolloInteres" id="DesarrolloInteres" readonly>
+                  <input type="text" class="form-control" formControlName="DesarrolloInteres" id="DesarrolloInteres">
                 </div>
               </div>
             </div>
@@ -92,7 +92,7 @@
               <div class="col col-lg-6">
                 <div class="form-group">
                   <label for="OtraTipificacion">Otro</label>
-                  <input type="text" class="form-control" formControlName="OtraTipificacion" id="OtraTipificacion" readonly>
+                  <input type="text" class="form-control" formControlName="OtraTipificacion" id="OtraTipificacion">
                 </div>
               </div>
             </div>
@@ -105,7 +105,7 @@
               </div>
             </div>
           </div><!-- End Section2-->                
-          <div class="row">
+          <div class="row" *ngIf="authServ.getRole()=='1' || authServ.getRole()=='3'">
             <div class="col">
               <div class="button-container">
                 <button type="submit" class="btn btn-outline-primary">Actualizar</button>
@@ -113,6 +113,24 @@
             </div>
           </div>
         </form>
+        <div class="row">
+          <div class="col col-lg-8 offset-lg-2">
+            <div class="message-container hidden" #msgcont>
+              <div class="row">
+                <div class="col col-lg-10">
+                  <div class="mesage">
+                    <p>{{ message }}</p>
+                  </div>
+                </div>
+                <div class="col col-lg-2">
+                  <div class="icon-message text-center">
+                    <i class="far" #msgicon ></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="row">
         <div class="col">

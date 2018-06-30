@@ -4,8 +4,7 @@ import { Http, Headers, Response} from '@angular/http';
 
 import { User } from '../interfaces/user';
 
-import { pipe, Observable } from 'rxjs';
-import { ErrorObservable } from 'rxjs/observable/ErrorObservable'
+import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { map, catchError, tap } from 'rxjs/operators';
 import 'rxjs';
 
@@ -20,7 +19,6 @@ export class AuthService {
 
   userRegister(user: User) {
     const data = JSON.stringify({email: user.email, password: user.password});
-
     return this.http.post('http://localhost:8000/api/auth/register', data, {headers: this.headers}).pipe(
       map(
         (res: Response) => {
@@ -44,10 +42,16 @@ export class AuthService {
       ),
       tap(
         (data) => {
+          let permission: any[] = [];
+
           localStorage.setItem('token', data.data.token);
           localStorage.setItem('user_id', data.data.user.id);
           localStorage.setItem('user_email', data.data.user.email);
           localStorage.setItem('user_role', data.data.user.roles[0].id);
+          for(let i = 0; i < data.data.user.permissions.length; i++){
+            permission.push(data.data.user.permissions[i]);
+          }
+          localStorage.setItem('permissions', JSON.stringify(permission));
         }
       ),
       catchError(err => {
@@ -79,6 +83,10 @@ export class AuthService {
 
   getUserId(){
     return this.userIsAuthenticated() ? localStorage.getItem('user_id') : 'null';
+  }
+
+  getPermissions(){
+    return this.userIsAuthenticated() ? localStorage.getItem('permissions') : 'null';
   }
 
 }

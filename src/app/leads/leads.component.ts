@@ -12,7 +12,7 @@ export class LeadsComponent implements OnInit {
 
   private leads: any[];
   private p: number = 1;
-  private entries: number[] = [1,2,3,4,5,6,7,8,9,10];
+  private entries: number[] = [5, 10, 20, 50, 100];
   private entriesForm: FormGroup;
   private filterForm: FormGroup;
   private total: number = 0;
@@ -35,12 +35,7 @@ export class LeadsComponent implements OnInit {
   }
 
   sendLeadToForm(id){
-    let params: NavigationExtras = {
-      queryParams: {
-        'register_id': id
-      }
-    }
-    this.router.navigate(['leadsform'], params);
+    this.router.navigate(['leadsform', id]);
   }
 
   submitFilter(){

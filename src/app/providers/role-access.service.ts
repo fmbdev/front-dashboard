@@ -12,10 +12,8 @@ export class RoleAccessService {
     let role = this.authServ.getRole();
     if(role == '1'){
       this.router.navigate(['executive-list']);
-    }else if(role == '2'){
+    }else if(role == '2' || role == '3'){
       this.router.navigate(['tables']);
-    }else if(role == '3'){
-      this.router.navigate(['clients']);
     }
   }
 }

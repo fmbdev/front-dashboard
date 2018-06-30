@@ -27,6 +27,30 @@
             font-weight: bold;
         }
     }
+
+    .message-container{
+        margin-top: 30px;
+        padding: 15px 0 15px 20px;
+        background-color: grey;
+        border-radius: 4px;
+
+        p{
+            margin-bottom: 0;
+        }
+
+        &.hidden{
+            display: none;
+        }       
+    }
+
+    .msg-success{
+        background-color: #7DCEA0
+    }
+
+    .msg-error{
+        background-color: #E74C3C; 
+
+    }
 }
 
 .link-container{

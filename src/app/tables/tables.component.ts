@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationExtras } from '@angular/router';
+import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+import { AuthService } from '../providers/auth.service';
 import { TablesService } from '../providers/tables.service';
 
 @Component({
@@ -16,18 +17,28 @@ export class TablesComponent implements OnInit {
   private tableForm: FormGroup;
 
   constructor(private router: Router,
+              private authServ: AuthService,
               private tablesServ: TablesService,
               private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.initTableForm();
-
     this.tables = [];
-    this.tablesServ.getTables().subscribe(
-      (data: any[]) => {
-        this.tables = data;
+    let role = this.authServ.getRole();
+
+    if(role == '1' || role == '2'){
+      this.tablesServ.getTables().subscribe(
+        (data: any[]) => {
+          this.tables = data;
+        }
+      );   
+    }else if(role == '3'){
+      let permissions: any[] = JSON.parse(this.authServ.getPermissions());
+      for(let i = 0; i < permissions.length; i++){
+        this.tables.push({'name': permissions[i].table})
       }
-    )
+    }
+   
   }
 
   selectTable(table: string){
@@ -40,14 +51,8 @@ export class TablesComponent implements OnInit {
     }
   }
 
-  sendTableToForm(name, id){
-    let params: NavigationExtras = {
-      queryParams: {
-        'table': name,
-        'register_id': id
-      }
-    }
-    this.router.navigate(['tablesform'], params);
+  sendTableToForm(table, id){
+    this.router.navigate(['tablesform', table, id]);
   }
 
   private initTableForm(){

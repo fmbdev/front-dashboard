@@ -58,7 +58,7 @@ import { LeadsFormComponent } from './leads-form/leads-form.component';
     ReactiveFormsModule,
     NgxPaginationModule
   ],
-  providers: [AuthService, RoleAccessService, TablesService, ExecutiveService, LeadsService, AuthGuard],
+  providers: [AuthService, RoleAccessService, TablesService, ExecutiveService, LeadsService, WeekOfYearPipe, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

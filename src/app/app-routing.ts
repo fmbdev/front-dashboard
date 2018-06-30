@@ -16,14 +16,14 @@ import { ExecutiveListComponent } from './executive-list/executive-list.componen
 const APP_ROUTES: Routes = [
     {
         path: '',
-        component: LoginComponent
+        component: LoginComponent,
     },
     {
         path:'register',
         component: RegisterComponent
     },
     {
-        path: 'executives',
+        path: 'executives/:id',
         component: ExecutivesComponent,
         canActivate: [AuthGuard]
     },
@@ -38,7 +38,7 @@ const APP_ROUTES: Routes = [
         canActivate: [AuthGuard]
     },
     {
-        path: 'tablesform',
+        path: 'tablesform/:table/:id',
         component: TablesFormComponent,
         canActivate: [AuthGuard]
     },
@@ -48,7 +48,7 @@ const APP_ROUTES: Routes = [
         canActivate: [AuthGuard]
     },
     {
-        path: 'leadsform',
+        path: 'leadsform/:id',
         component: LeadsFormComponent,
         canActivate: [AuthGuard]
     },

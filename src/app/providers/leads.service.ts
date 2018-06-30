@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, Response} from '@angular/http';
 
 import { AuthService } from '../providers/auth.service';
+import { WeekOfYearPipe } from '../pipes/week-of-year.pipe';
 
-import { pipe } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import 'rxjs';
 
@@ -15,7 +15,9 @@ export class LeadsService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
 
-  constructor(private http: Http, private authServ: AuthService) {
+  constructor(private http: Http, 
+              private authServ: AuthService,
+              private weekPipe: WeekOfYearPipe) {
     this.token = this.authServ.getToken(); 
   }
 
@@ -39,21 +41,33 @@ export class LeadsService {
   }
 
   getRegisterLeadById(id: string){
-    for(let i = 0; i < this.registers.length; i++){
-      if(this.registers[i].id == id){
-        return this.registers[i];
-      }
-    }
+    return this.http.get('http://localhost:8000/api/leads/'+id+'?token='+this.token, {headers: this.headers}).pipe(
+      map(
+        (res: Response) => {
+          return res.json();
+        }
+      )
+    )
   }
 
   getLeadsByFilter(filter: string, valueField: string){
     let leadsByilter = [];
-    for(let i = 0; i < this.registers.length; i++){
-      if(this.registers[i][filter].toLowerCase().indexOf(valueField.toLowerCase()) != -1){
-        leadsByilter.push(this.registers[i])
+    if(filter.toLowerCase() != 'semana'){
+      for(let i = 0; i < this.registers.length; i++){
+        if(this.registers[i][filter].toLowerCase().indexOf(valueField.toLowerCase()) != -1){
+          leadsByilter.push(this.registers[i])
+        }
+      }
+    }else{
+      for(let i = 0; i < this.registers.length; i++){
+        let week = this.weekPipe.transform(this.registers[i]['FechaCreacion']);
+        if(week == valueField){
+          leadsByilter.push(this.registers[i])
+        }
       }
     }
     return leadsByilter;
   }
+
 
 }
