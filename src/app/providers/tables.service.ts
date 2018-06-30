@@ -21,6 +21,7 @@ export class TablesService {
   }
 
   getTables(){
+    /*http://localhost:8000/api/tables?token=*/
     return this.http.get('http://localhost:8000/api/tables?token='+this.token, {headers: this.headers}).pipe(
       map(
         (res: Response) => {

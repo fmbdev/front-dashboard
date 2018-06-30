@@ -19,6 +19,7 @@ export class ExecutiveService {
   }
 
   getExecutives(){
+    /*http://localhost:8000/api/executives?token*/
     return this.http.get('http://localhost:8000/api/executives?token='+this.token, {headers: this.headers}).pipe(
       map(
         (res: Response) => {

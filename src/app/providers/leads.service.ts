@@ -22,6 +22,7 @@ export class LeadsService {
   }
 
   getLeads(){
+    /*http://localhost:8000/api/leads?token=*/
     return this.http.get('http://localhost:8000/api/leads?token='+this.token, {headers: this.headers}).pipe(
       map(
         (res: Response) => {

@@ -108,8 +108,10 @@ export class TablesFormComponent implements OnInit {
   }
 
   private enabledFieldsByPermissions(){
-    this.getPermissionsFieldsByTable();
+    this.form.controls['Viable'].enable();
+    this.form.controls['Comentarios'].enable();
 
+    this.getPermissionsFieldsByTable();
     Object.keys(this.form.controls).forEach(key => {
       if(this.fieldsTable != []){
         for(let i = 0; i < this.fieldsTable.length; i++){
@@ -212,10 +214,10 @@ export class TablesFormComponent implements OnInit {
       Valor_Vivienda: [{value: '', disabled: true}, Validators.required],
       Tipo_Ingreso: [{value: '', disabled: true}, Validators.required],
       Ingreso_MXN: [{value: '', disabled: true}, Validators.required],
-      Viable: ['', Validators.required],
+      Viable: [{value: '', disabled: true}, Validators.required],
       Semana: [{value: '', disabled: true}, Validators.required],
       Fecha_Registro: [{value: '', disabled: true}, Validators.required],
-      Comentarios: ['', Validators.required]
+      Comentarios: [{value: '', disabled: true}, Validators.required]
     });
   }
 

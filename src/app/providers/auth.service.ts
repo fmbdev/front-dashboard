@@ -19,6 +19,7 @@ export class AuthService {
 
   userRegister(user: User) {
     const data = JSON.stringify({email: user.email, password: user.password});
+    /*http://localhost:8000/api/auth/register*/
     return this.http.post('http://localhost:8000/api/auth/register', data, {headers: this.headers}).pipe(
       map(
         (res: Response) => {

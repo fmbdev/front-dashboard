@@ -119,9 +119,13 @@ export class LeadsFormComponent implements OnInit {
   }
 
   private enabledFieldsByPermissions(){
+    this.form.controls['Viable'].enable();
+    this.form.controls['Tipificacion'].enable();
+    this.form.controls['Comentarios'].enable();
+    
     this.getPermissionsFieldsByTable();
     Object.keys(this.form.controls).forEach(key => {
-      if(this.fieldsTable != []){
+      if(this.fieldsTable.length > 0){
         for(let i = 0; i < this.fieldsTable.length; i++){
           if(key.toUpperCase() == this.fieldsTable[i].toUpperCase()){
             this.form.controls[key].enable();
@@ -201,12 +205,12 @@ export class LeadsFormComponent implements OnInit {
       Email: [{value: '', disabled: true}, Validators.required],
       FechaNacimiento: [{value: '', disabled: true}, Validators.required],
       Semana: [{value: '', disabled: true}, Validators.required],
-      Viable: ['', Validators.required],
+      Viable: [{value: '', disabled: true}, Validators.required],
       FechaCreacion: [{value: '', disabled: true}, Validators.required],
       DesarrolloInteres: [{value: '', disabled: true}, Validators.required],
-      Tipificacion: ['', Validators.required],
+      Tipificacion: [{value: '', disabled: true}, Validators.required],
       OtraTipificacion: [{value: '', disabled: true}, Validators.required],
-      Comentarios: ['', Validators.required]
+      Comentarios: [{value: '', disabled: true}, Validators.required]
     });
   }
 
